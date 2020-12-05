@@ -1,0 +1,1 @@
+{"OrigionFilePath":"Conifg/ClientLocalization","PendingTranslationPath":"\u5F85\u7FFB\u8BD1\u6587\u4EF6","AlreadyTranslatedPath":"\u5DF2\u7FFB\u8BD1\u6587\u4EF6","InputTranslatedPath":"\u6700\u7EC8\u7FFB\u8BD1\u6587\u4EF6"}

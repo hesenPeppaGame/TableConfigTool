@@ -1,3 +1,4 @@
+[![](https://img.shields.io/badge/Build-passing-green)]()
 # TableConfigTool
  Table配置表工具
 自动维护 翻译内容流程

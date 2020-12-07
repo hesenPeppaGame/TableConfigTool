@@ -29,6 +29,9 @@ namespace ConsoleApp1
             AppUtils.GetFileName(transFileinfos, appConfig.InputTranslatedPath);
             AppUtils.AddItems<LanguageConifgSplit>(transFileinfos, transFileCfgs);
 
+            //导出时清理原配置表
+            ConfigOperate.ConfigChecker(clinetCfgs, transFileCfgs);
+
             //写差异表
             List<LanguageConifgSplit> readyTransFileCfgs = new List<LanguageConifgSplit>();
             for (int i = 0; i < (int)eLanguageEnum.Th; i++)
@@ -95,6 +98,8 @@ namespace ConsoleApp1
             {
                 newConfig.SaveOrigionFile();
             }
+
+            ConfigOperate.FixConfig(clinetCfgs);
         }
 
         private static void CheckSameLanguage(ConfigSplit left, LanguageConifgSplit right, LanguageConifgSplit addItem)

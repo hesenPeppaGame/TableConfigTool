@@ -13,22 +13,14 @@ namespace FixConfigTool
     {
         static void Main(string[] args)
         {
-            List<ConfigSplit> newTranslates = new List<ConfigSplit>();
+            List<ConfigSplit> origionTranslates = new List<ConfigSplit>();
             AppConfig appConfig = AppConfig.Read();
 
-            //新回来的已经翻译的文件
             List<FileInfo> newTransFiles = new List<FileInfo>();
             AppUtils.GetFileName(newTransFiles, appConfig.OrigionFilePath);
-            AppUtils.AddItems<ConfigSplit>(newTransFiles, newTranslates);
+            AppUtils.AddItems<ConfigSplit>(newTransFiles, origionTranslates);
 
-            for (int i = 0; i < newTranslates.Count; i++)
-            {
-                var needFix = newTranslates[i].FixConfig();
-                if (needFix)
-                {
-                    newTranslates[i].SaveOrigionFile();
-                }
-            }
+            ConfigOperate.FixConfig(origionTranslates);
         }
     }
 }

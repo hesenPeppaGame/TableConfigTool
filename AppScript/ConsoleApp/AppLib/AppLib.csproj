@@ -45,6 +45,7 @@
     <Compile Include="AppConfig.cs" />
     <Compile Include="AppDefine.cs" />
     <Compile Include="AppUtils.cs" />
+    <Compile Include="ConfigOperate.cs" />
     <Compile Include="IConfigSplit.cs" />
     <Compile Include="LanguageConifgSplit.cs" />
     <Compile Include="LitJson\IJsonWrapper.cs" />

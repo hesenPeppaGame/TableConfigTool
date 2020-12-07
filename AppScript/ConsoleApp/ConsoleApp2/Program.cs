@@ -54,6 +54,12 @@ namespace ConsoleApp2
             {
                 oldTranslates[i].SaveOrigionFile();
             }
+
+            //导入后清理原配置表
+            ConfigOperate.ConfigChecker(clinetLocalizations, newTranslates);
+
+            //修复配置表
+            ConfigOperate.FixConfig(clinetLocalizations);
         }
 
         /// <summary>

@@ -58,6 +58,11 @@ namespace AppLib
         public string FileName { get { return fileName; }set { fileName = value; } }
 
         /// <summary>
+        /// 中文Key的位置
+        /// </summary>
+        public int CnKeyIndex { get { return GetLangIndex(eLanguageEnum.Cn); } }
+
+        /// <summary>
         /// <inheritdoc/>
         /// </summary>
         /// <param name="fileName"></param>
@@ -284,6 +289,47 @@ namespace AppLib
                 }
             }
         }
+
+        /// <summary>
+        /// 检查翻译后的文字以及配置表的文字是否相同
+        /// </summary>
+        /// <param name="conifgSplitData">翻译后的文件信息</param>
+        public void CheckAndReplaceLines(LanguageConifgSplit conifgSplitData)
+        {
+            //中文不替换
+            if (conifgSplitData.EConfigLang == eLanguageEnum.Cn)
+            {
+                return;
+            }
+
+            int langIndex = GetLangIndex(conifgSplitData.EConfigLang);
+            for (int i = 0; i < ConfigLineDatas.Count; i++)
+            {
+                var config = ConfigLineDatas[i];
+                string myKey = config.Values[GetLangIndex(eLanguageEnum.Cn)];
+                int len = conifgSplitData.ConfigLineDatas.Count;
+                bool translated = false;
+                for (int l = 0; l < len; l++)
+                {
+                    var oldData = conifgSplitData.ConfigLineDatas[l];
+                    var otherKey = oldData.Key;
+                    if (myKey == otherKey)
+                    {
+                        translated = true;
+                        if (config.Values[langIndex] != oldData.Value)
+                        {
+                            config.Values[langIndex] = "";
+                        }
+                    }
+                }
+
+                if (!translated)
+                {
+                    config.Values[langIndex] = "";
+                }
+            }
+        }
+         
 
         /// <summary>
         /// 添加行数据
